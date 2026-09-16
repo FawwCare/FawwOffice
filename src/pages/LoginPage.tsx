@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Leaf, Eye, EyeOff, Loader2 } from 'lucide-react';
+import { Leaf, Eye, EyeOff, Loader2, Calendar, BarChart2, ShieldCheck, Smartphone } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
 const loginSchema = z.object({
@@ -52,15 +52,19 @@ export default function LoginPage() {
         <p className="text-center text-lg text-white/70 max-w-xs leading-relaxed">
           원청·도급·파우 실무자가 하나의 플랫폼에서 일정과 결과를 공유합니다.
         </p>
-        <div className="mt-12 w-full max-w-sm rounded-2xl bg-white/10 p-6 backdrop-blur">
-          <div className="space-y-3 text-sm text-white/80">
-            {['📅 구글 캘린더 연동 일정 관리', '📊 실시간 만족도 조사 결과', '🔐 역할별 권한 분리', '📱 모바일 최적화 (PWA)'].map(
-              (t) => (
-                <div key={t} className="flex items-center gap-2">
-                  <span>{t}</span>
-                </div>
-              )
-            )}
+        <div className="mt-12 w-full max-w-sm rounded-2xl bg-white/10 p-6 backdrop-blur border border-white/10">
+          <div className="space-y-3.5 text-sm text-white/85">
+            {[
+              { icon: <Calendar size={16} className="text-[#4ade80]" />, text: '구글 캘린더 연동 일정 관리' },
+              { icon: <BarChart2 size={16} className="text-[#4ade80]" />, text: '실시간 만족도 조사 결과' },
+              { icon: <ShieldCheck size={16} className="text-[#4ade80]" />, text: '역할별 권한 분리 및 보안' },
+              { icon: <Smartphone size={16} className="text-[#4ade80]" />, text: '모바일 최적화 (PWA 지원)' },
+            ].map((item) => (
+              <div key={item.text} className="flex items-center gap-2.5">
+                <span className="flex-shrink-0">{item.icon}</span>
+                <span>{item.text}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

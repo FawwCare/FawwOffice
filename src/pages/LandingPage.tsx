@@ -1,6 +1,6 @@
 import { HeroSection } from '@/components/landing/HeroSection';
 import { ServicesSection } from '@/components/landing/ServicesSection';
-import { Leaf, Mail, Phone } from 'lucide-react';
+import { Leaf, Mail, Phone, Target, BarChart2, BadgeCheck, Zap } from 'lucide-react';
 
 // ─── LandingPage ───────────────────────────────────────────────
 export default function LandingPage() {
@@ -25,22 +25,22 @@ export default function LandingPage() {
 function WhyFawwSection() {
   const features = [
     {
-      icon: '🎯',
+      icon: <Target size={22} className="text-[#2d7a4f]" />,
       title: '맞춤형 기업 프로그램',
       desc: '기업 규모와 직종 특성에 맞춰 최적화된 헬스케어 커리큘럼을 설계합니다.',
     },
     {
-      icon: '📊',
+      icon: <BarChart2 size={22} className="text-[#2d7a4f]" />,
       title: '데이터 기반 성과 관리',
       desc: '참여 현황, 만족도 조사 결과를 실시간 대시보드로 투명하게 제공합니다.',
     },
     {
-      icon: '👩‍⚕️',
+      icon: <BadgeCheck size={22} className="text-[#2d7a4f]" />,
       title: '전문 자격 보유 강사진',
       desc: '물리치료사, 운동처방사, 공인 요가 강사, 심리상담사로 구성된 전문 팀입니다.',
     },
     {
-      icon: '🚀',
+      icon: <Zap size={22} className="text-[#2d7a4f]" />,
       title: '빠른 현장 방문 서비스',
       desc: '별도 이동 없이 사내에서 프로그램을 진행해 직원 참여율을 극대화합니다.',
     },
@@ -61,9 +61,11 @@ function WhyFawwSection() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="rounded-2xl border border-gray-100 bg-gray-50 p-6 transition hover:border-[#2d7a4f]/30 hover:shadow-md"
+              className="rounded-2xl border border-gray-100 bg-gray-50/70 p-6 transition hover:border-[#2d7a4f]/30 hover:bg-white hover:shadow-md group"
             >
-              <div className="mb-3 text-4xl">{f.icon}</div>
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white border border-gray-100 shadow-xs group-hover:border-[#2d7a4f]/30 group-hover:bg-[#e8f5ee]/40 transition">
+                {f.icon}
+              </div>
               <h3 className="mb-2 font-bold text-gray-900">{f.title}</h3>
               <p className="text-sm leading-relaxed text-gray-500">{f.desc}</p>
             </div>

@@ -2,12 +2,12 @@ import { useState } from 'react';
 import type { ServiceType } from '@/types/booking.types';
 import { BookingModal } from './BookingModal';
 import { ArrowRight } from 'lucide-react';
+import { ServiceIcon } from '@/components/common/ServiceIcon';
 import { cn } from '@/utils/cn';
 
 // ─── 서비스 데이터 ─────────────────────────────────────────────
 interface ServiceData {
   type: ServiceType;
-  icon: string;
   title: string;
   subtitle: string;
   description: string;
@@ -18,7 +18,6 @@ interface ServiceData {
 const SERVICES: ServiceData[] = [
   {
     type: '근골격케어',
-    icon: '🦴',
     title: '근골격케어',
     subtitle: '몸의 균형을 바로잡다',
     description:
@@ -29,7 +28,6 @@ const SERVICES: ServiceData[] = [
   },
   {
     type: '요가/명상',
-    icon: '🧘',
     title: '요가 / 명상',
     subtitle: '몸과 마음의 조화',
     description:
@@ -40,7 +38,6 @@ const SERVICES: ServiceData[] = [
   },
   {
     type: '멘탈코치',
-    icon: '🧠',
     title: '멘탈코치',
     subtitle: '내면의 힘을 키우다',
     description:
@@ -78,12 +75,16 @@ function ServiceCard({ service, onBook }: ServiceCardProps) {
           loading="lazy"
         />
         {/* 그라디언트 오버레이 */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        {/* 아이콘 + 제목 (이미지 위) */}
-        <div className="absolute bottom-4 left-5">
-          <span className="text-3xl">{service.icon}</span>
-          <h3 className="mt-1 text-xl font-bold text-white">{service.title}</h3>
-          <p className="text-sm font-medium text-white/80">{service.subtitle}</p>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        {/* 아이콘 + 제목 (이미지 위 모던 뱃지 형태) */}
+        <div className="absolute bottom-4 left-5 flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-xs">
+            <ServiceIcon serviceType={service.type} size={20} variant="raw" className="text-white" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-white leading-tight">{service.title}</h3>
+            <p className="text-xs font-medium text-white/85 mt-0.5">{service.subtitle}</p>
+          </div>
         </div>
       </div>
 
