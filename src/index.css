@@ -75,23 +75,34 @@ body {
   z-index: 40;
 }
 
-/* 모달 팝업 시 부드러운 안개 블러 */
-@keyframes modalMistIn {
-  0% {
+/* ─── 모달 애니메이션 (배경 딤드 + 완전 불투명 순백 카드) ─── */
+@keyframes modalBackdropFadeIn {
+  from {
     opacity: 0;
-    filter: blur(10px);
   }
-  100% {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalCardFadeIn {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+  }
+  to {
     opacity: 1;
     filter: blur(0px);
   }
 }
 
-.animate-ios-modal {
-  animation: modalMistIn 0.35s ease-out forwards;
-  will-change: opacity, filter;
+.animate-modal-backdrop {
+  animation: modalBackdropFadeIn 0.2s ease-out forwards;
 }
 
-.animate-ios-backdrop {
-  animation: whiteFogDissolve 0.35s ease-out reverse forwards;
+.animate-modal-card {
+  animation: modalCardFadeIn 0.25s ease-out forwards;
+  will-change: opacity, filter;
+  background-color: #ffffff !important;
+  opacity: 1 !important;
 }

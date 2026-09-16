@@ -34,10 +34,10 @@ export function QRCodeModal({ isOpen, onClose, schedule }: QRCodeModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 animate-ios-backdrop"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 animate-modal-backdrop backdrop-blur-xs"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="w-full max-w-sm rounded-3xl bg-white shadow-2xl overflow-hidden animate-ios-modal">
+      <div className="w-full max-w-sm rounded-3xl bg-white shadow-2xl overflow-hidden animate-modal-card border border-gray-100">
         {/* 헤더 */}
         <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
           <h2 className="font-bold text-gray-900">만족도 조사 QR 코드</h2>

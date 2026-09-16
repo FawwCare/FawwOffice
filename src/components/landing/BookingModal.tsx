@@ -78,13 +78,13 @@ export function BookingModal({ isOpen, onClose, initialService }: BookingModalPr
   if (!isOpen) return null;
 
   return (
-    // 오버레이 (아이폰 스타일 블러 배경)
+    // 배경 어두운 딤드 오버레이
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 animate-ios-backdrop"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 animate-modal-backdrop backdrop-blur-xs"
       onClick={(e) => e.target === e.currentTarget && handleClose()}
     >
-      {/* 모달 카드 (아이폰 스타일 팝업 블러 페이드) */}
-      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl animate-ios-modal">
+      {/* 모달 카드 (완전 불투명한 순백색 카드) */}
+      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl animate-modal-card border border-gray-100">
         {/* 헤더 */}
         <div className="sticky top-0 flex items-center justify-between border-b border-gray-100 bg-white px-6 py-4 z-10">
           <h2 className="text-lg font-bold text-gray-900">서비스 예약 신청</h2>
