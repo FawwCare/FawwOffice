@@ -118,7 +118,7 @@ export function ServicesSection() {
   };
 
   return (
-    <section id="services" className="bg-gray-50 px-4 py-20">
+    <section id="services" className="bg-[#fafafa] px-4 pt-14 pb-20">
       <div className="mx-auto max-w-6xl">
         {/* 섹션 헤더 */}
         <div className="mb-14 text-center">
