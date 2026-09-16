@@ -2,7 +2,9 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import type { DateClickArg } from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
+import type { EventClickArg, EventContentArg } from '@fullcalendar/core';
 import koLocale from '@fullcalendar/core/locales/ko';
 import type { CalendarEvent, Schedule } from '@/types/schedule.types';
 import { cn } from '@/utils/cn';
@@ -11,7 +13,7 @@ interface MainCalendarProps {
   events: CalendarEvent[];
   onDateClick: (date: Date) => void;
   onEventClick: (schedule: Schedule) => void;
-  selectedDate: Date | null;
+  selectedDate?: Date | null;
 }
 
 const SERVICE_COLORS: Record<string, { bg: string; border: string }> = {
@@ -76,25 +78,27 @@ export function MainCalendar({
     >
       <div className="p-4">
         <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin] as any}
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
           initialView="dayGridMonth"
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          locale={koLocale as any}
+          locale={koLocale}
           headerToolbar={{
             left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,listWeek',
           }}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          events={events as any}
-          dateClick={(arg) => onDateClick(arg.date)}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          eventClick={(arg: any) => {
+          buttonText={{
+            today: '오늘',
+            month: '월',
+            week: '주',
+            list: '목록',
+          }}
+          events={events}
+          dateClick={(arg: DateClickArg) => onDateClick(arg.date)}
+          eventClick={(arg: EventClickArg) => {
             const schedule: Schedule = arg.event.extendedProps?.schedule;
             if (schedule) onEventClick(schedule);
           }}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          eventContent={(arg: any) => {
+          eventContent={(arg: EventContentArg) => {
             const schedule: Schedule | undefined = arg.event.extendedProps?.schedule;
             return (
               <div className="flex items-center gap-1 px-1 py-0.5 text-xs leading-tight overflow-hidden">
