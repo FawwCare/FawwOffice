@@ -124,10 +124,10 @@ export function ResponseTable({ schedule, responses }: ResponseTableProps) {
       {/* 개별 응답 상세 모달 */}
       {selectedResponse && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 animate-ios-backdrop"
           onClick={(e) => e.target === e.currentTarget && setSelectedResponse(null)}
         >
-          <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+          <div className="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl max-h-[90vh] overflow-y-auto animate-ios-modal">
             <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
               <h4 className="font-bold text-gray-900 text-base">
                 {selectedResponse.respondentName} 님의 설문 응답 상세

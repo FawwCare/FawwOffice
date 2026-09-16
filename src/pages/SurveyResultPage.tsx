@@ -203,34 +203,36 @@ export default function SurveyResultPage() {
               />
             </div>
 
-            {/* 4. 탭 콘텐츠 영역 */}
-            {activeTab === 'overview' && (
-              <div className="space-y-5">
-                {/* 4-1. KPI 스코어 카드 (총 응답, 평점, 만족율) */}
-                <SurveyScoreCards stats={stats} />
+            {/* 4. 탭 콘텐츠 영역 (탭 전환 시 부드러운 블러 페이드) */}
+            <div key={activeTab} className="animate-ios-fade">
+              {activeTab === 'overview' && (
+                <div className="space-y-5">
+                  {/* 4-1. KPI 스코어 카드 (총 응답, 평점, 만족율) */}
+                  <SurveyScoreCards stats={stats} />
 
-                {/* 4-2. 레이더 차트 (6개 문항 분석) */}
-                <RatingRadarChart metrics={stats.metrics} />
+                  {/* 4-2. 레이더 차트 (6개 문항 분석) */}
+                  <RatingRadarChart metrics={stats.metrics} />
 
-                {/* 4-3. 만성 통증 부위 분석 (질문 15, 16) */}
-                <HealthPainChart stats={stats} />
+                  {/* 4-3. 만성 통증 부위 분석 (질문 15, 16) */}
+                  <HealthPainChart stats={stats} />
 
-                {/* 4-4. 응답자 인구통계 (근무형태, 성별, 연령, 지역) */}
-                <DemographicsCharts stats={stats} />
-              </div>
-            )}
+                  {/* 4-4. 응답자 인구통계 (근무형태, 성별, 연령, 지역) */}
+                  <DemographicsCharts stats={stats} />
+                </div>
+              )}
 
-            {activeTab === 'feedback' && (
-              <div>
-                <FeedbackList stats={stats} />
-              </div>
-            )}
+              {activeTab === 'feedback' && (
+                <div>
+                  <FeedbackList stats={stats} />
+                </div>
+              )}
 
-            {activeTab === 'raw' && (
-              <div>
-                <ResponseTable schedule={currentSchedule} responses={responses} />
-              </div>
-            )}
+              {activeTab === 'raw' && (
+                <div>
+                  <ResponseTable schedule={currentSchedule} responses={responses} />
+                </div>
+              )}
+            </div>
           </>
         )}
       </div>

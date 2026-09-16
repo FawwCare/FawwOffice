@@ -24,3 +24,74 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* ─── 0.5초 뽀얀 안개가 스르륵 걷히는 미스트 전환 효과 ─── */
+@keyframes mistContentReveal {
+  0% {
+    opacity: 0.25;
+    filter: blur(14px) brightness(1.08);
+  }
+  30% {
+    opacity: 0.6;
+    filter: blur(8px) brightness(1.04);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px) brightness(1);
+  }
+}
+
+@keyframes whiteFogDissolve {
+  0% {
+    opacity: 0.85;
+    backdrop-filter: blur(12px);
+  }
+  40% {
+    opacity: 0.5;
+    backdrop-filter: blur(6px);
+  }
+  100% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    visibility: hidden;
+  }
+}
+
+/* 뽀얀 안개 효과 컨테이너 (움직임 전혀 없음, 0.5초 동안 안개만 스르륵 사라짐) */
+.animate-ios-fade {
+  position: relative;
+  animation: mistContentReveal 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+  will-change: opacity, filter;
+}
+
+/* 뽀얀 안개 레이어 */
+.animate-ios-fade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.45) 60%, rgba(240, 245, 242, 0.2) 100%);
+  animation: whiteFogDissolve 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+  z-index: 40;
+}
+
+/* 모달 팝업 시 부드러운 안개 블러 */
+@keyframes modalMistIn {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+.animate-ios-modal {
+  animation: modalMistIn 0.35s ease-out forwards;
+  will-change: opacity, filter;
+}
+
+.animate-ios-backdrop {
+  animation: whiteFogDissolve 0.35s ease-out reverse forwards;
+}
