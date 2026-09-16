@@ -5,15 +5,10 @@ import { ScheduleSummaryCard } from '@/components/calendar/ScheduleSummaryCard';
 import { ROLE_LABELS } from '@/utils/permissions';
 import type { Schedule, ScheduleStatus } from '@/types/schedule.types';
 import { cn } from '@/utils/cn';
-import { Search, SlidersHorizontal } from 'lucide-react';
+import { Search, SearchX, SlidersHorizontal } from 'lucide-react';
+import { ServiceIcon } from '@/components/common/ServiceIcon';
 
 type FilterStatus = 'all' | ScheduleStatus;
-
-const SERVICE_ICONS: Record<string, string> = {
-  '근골격케어': '🦴',
-  '요가/명상': '🧘',
-  '멘탈코치': '🧠',
-};
 
 const STATUS_LABELS: Record<FilterStatus, string> = {
   all: '전체',
@@ -105,8 +100,11 @@ export default function MySchedulesPage() {
           <div className="lg:col-span-2 space-y-2">
             {filteredSchedules.length === 0 ? (
               <div className="rounded-2xl border border-dashed border-gray-200 bg-white p-10 text-center">
-                <p className="text-4xl mb-3">🔍</p>
-                <p className="font-semibold text-gray-600">일정이 없습니다.</p>
+                <div className="mb-3 mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-gray-100 text-gray-400">
+                  <SearchX size={22} strokeWidth={1.75} />
+                </div>
+                <p className="font-semibold text-gray-700 text-sm">일치하는 일정이 없습니다.</p>
+                <p className="mt-1 text-xs text-gray-400">검색어나 필터를 확인해 보세요.</p>
               </div>
             ) : (
               filteredSchedules.map((schedule) => (
@@ -171,9 +169,7 @@ function ScheduleListItem({ schedule, isSelected, onClick }: ScheduleListItemPro
       )}
     >
       <div className="flex items-start gap-3">
-        <span className="text-2xl mt-0.5">
-          {schedule.serviceType ? SERVICE_ICONS[schedule.serviceType] ?? '📅' : '📅'}
-        </span>
+        <ServiceIcon serviceType={schedule.serviceType} size={18} />
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <span className={cn('rounded-full px-2 py-0.5 text-xs font-semibold', STATUS_BADGE[schedule.status])}>

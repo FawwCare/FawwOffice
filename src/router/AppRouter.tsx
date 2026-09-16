@@ -10,10 +10,16 @@ import SurveyResultPage from '@/pages/SurveyResultPage';
 // ─── 플레이스홀더 페이지 ────────────────────────────────────────
 function PlaceholderPage({ title }: { title: string }) {
   return (
-    <div className="flex min-h-full flex-col items-center justify-center gap-4 p-8 text-center">
-      <div className="text-5xl">🚧</div>
-      <h1 className="text-xl font-bold text-gray-700">{title}</h1>
-      <p className="text-sm text-gray-400">이 페이지는 다음 Phase에서 구현됩니다.</p>
+    <div className="flex min-h-full flex-col items-center justify-center gap-3 p-8 text-center">
+      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-100 text-gray-400">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+          <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
+          <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+        </svg>
+      </div>
+      <h1 className="text-lg font-bold text-gray-800">{title}</h1>
+      <p className="text-xs text-gray-400">준비 중인 기능입니다.</p>
     </div>
   );
 }

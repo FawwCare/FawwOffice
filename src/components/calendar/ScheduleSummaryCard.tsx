@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   MapPin, Phone, User, Copy, QrCode,
   ChevronRight, CheckCircle, Clock, XCircle,
-  Building2,
+  Building2, CalendarX, Award,
 } from 'lucide-react';
 import type { Schedule } from '@/types/schedule.types';
 import { QRCodeModal } from '@/components/qr/QRCodeModal';
@@ -35,9 +35,11 @@ export function ScheduleSummaryCard({ schedule, isUpcoming = false }: ScheduleSu
   if (!schedule) {
     return (
       <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-gray-200 bg-white p-10 text-center">
-        <div className="mb-3 text-4xl">📅</div>
-        <p className="font-semibold text-gray-600">선택한 날짜에 일정이 없습니다.</p>
-        <p className="mt-1 text-sm text-gray-400">다른 날짜를 선택해 주세요.</p>
+        <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-gray-100 text-gray-400">
+          <CalendarX size={22} strokeWidth={1.75} />
+        </div>
+        <p className="font-semibold text-gray-700 text-sm">선택한 날짜에 일정이 없습니다.</p>
+        <p className="mt-1 text-xs text-gray-400">다른 날짜를 선택해 주세요.</p>
       </div>
     );
   }
@@ -71,7 +73,10 @@ export function ScheduleSummaryCard({ schedule, isUpcoming = false }: ScheduleSu
           <div className="flex items-start justify-between gap-3 mb-4">
             <div className="flex-1 min-w-0">
               {isUpcoming && (
-                <p className="text-xs font-semibold text-[#2d7a4f] mb-1">📌 다가오는 일정</p>
+                <div className="flex items-center gap-1.5 mb-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#2d7a4f]" />
+                  <span className="text-[11px] font-bold text-[#2d7a4f] tracking-wide uppercase">다가오는 일정</span>
+                </div>
               )}
               <h3 className="font-bold text-gray-900 leading-snug">{schedule.title}</h3>
               <p className="mt-1 text-sm text-gray-500">
@@ -123,7 +128,7 @@ export function ScheduleSummaryCard({ schedule, isUpcoming = false }: ScheduleSu
             </InfoRow>
 
             {schedule.instructorNames && schedule.instructorNames.length > 0 && (
-              <InfoRow icon={<span className="text-sm">🎓</span>} label="강사">
+              <InfoRow icon={<Award size={15} />} label="강사">
                 <span className="text-gray-700">{schedule.instructorNames.join(', ')}</span>
               </InfoRow>
             )}

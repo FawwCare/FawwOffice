@@ -12,6 +12,7 @@ import {
   Leaf,
   ChevronDown,
   LogOut,
+  Shield,
 } from 'lucide-react';
 import type { UserRole } from '@/types/user.types';
 
@@ -86,10 +87,13 @@ export function Sidebar() {
         <div className="relative">
           <button
             onClick={() => setRoleMenuOpen(!roleMenuOpen)}
-            className="flex w-full items-center justify-between rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-xs font-medium text-amber-700"
+            className="flex w-full items-center justify-between rounded-xl bg-gray-50 border border-gray-200 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-100 transition"
           >
-            <span>🛠 역할: {user ? ROLE_LABELS[user.role] : '-'}</span>
-            <ChevronDown size={14} className={cn('transition', roleMenuOpen && 'rotate-180')} />
+            <span className="flex items-center gap-1.5">
+              <Shield size={13} className="text-[#2d7a4f]" />
+              역할: {user ? ROLE_LABELS[user.role] : '-'}
+            </span>
+            <ChevronDown size={14} className={cn('transition text-gray-400', roleMenuOpen && 'rotate-180')} />
           </button>
           {roleMenuOpen && (
             <div className="absolute bottom-full left-0 right-0 mb-1 rounded-xl bg-white border border-gray-200 shadow-lg overflow-hidden z-10">

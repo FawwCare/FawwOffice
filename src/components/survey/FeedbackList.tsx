@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { SurveyStats } from '@/types/survey.types';
-import { MessageSquare, Heart, AlertCircle, Sparkles } from 'lucide-react';
+import { MessageSquare, Heart, AlertCircle, Sparkles, Quote } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
 interface FeedbackListProps {
@@ -90,8 +90,10 @@ export function FeedbackList({ stats }: FeedbackListProps) {
               key={idx}
               className="rounded-xl border border-gray-100 bg-gray-50/70 p-4 transition hover:bg-white hover:border-[#2d7a4f]/30 hover:shadow-sm"
             >
-              <div className="flex items-start gap-2">
-                <span className="text-base flex-shrink-0">💬</span>
+              <div className="flex items-start gap-2.5">
+                <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 mt-0.5">
+                  <Quote size={12} className="rotate-180" />
+                </span>
                 <p className="text-xs text-gray-700 leading-relaxed break-words">{text}</p>
               </div>
             </div>

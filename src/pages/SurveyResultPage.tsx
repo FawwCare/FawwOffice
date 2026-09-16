@@ -18,6 +18,7 @@ import {
   BarChart3,
   MessageSquareText,
   FileSpreadsheet,
+  FileText,
 } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
@@ -77,8 +78,10 @@ export default function SurveyResultPage() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-50 p-6 text-center">
         <div>
-          <div className="text-4xl mb-3">📊</div>
-          <h2 className="text-lg font-bold text-gray-800">조회 가능한 일정이 없습니다.</h2>
+          <div className="mb-3 mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-100 text-gray-400">
+            <BarChart3 size={24} strokeWidth={1.75} />
+          </div>
+          <h2 className="text-base font-bold text-gray-800">조회 가능한 일정이 없습니다.</h2>
           <p className="text-xs text-gray-400 mt-1">배정된 일정이 등록되면 만족도 조사를 조회할 수 있습니다.</p>
         </div>
       </div>
@@ -173,7 +176,9 @@ export default function SurveyResultPage() {
         {/* 응답이 없는 경우 안내 */}
         {responses.length === 0 || !stats ? (
           <div className="rounded-2xl border border-dashed border-gray-200 bg-white p-12 text-center">
-            <div className="text-5xl mb-3">📝</div>
+            <div className="mb-3 mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-100 text-gray-400">
+              <FileText size={24} strokeWidth={1.75} />
+            </div>
             <h3 className="text-base font-bold text-gray-800">아직 등록된 만족도 설문 응답이 없습니다.</h3>
             <p className="text-xs text-gray-400 mt-1 max-w-md mx-auto">
               프로그램 진행 후 참가자분들이 만족도 조사 링크(QR)를 통해 제출하면 이곳에 실시간 차트와 통계가 분석되어 나타납니다.

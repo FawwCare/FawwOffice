@@ -23,8 +23,16 @@ export function SurveyScoreCards({ stats }: SurveyScoreCardsProps) {
           <span className="text-3xl font-extrabold text-gray-900">{stats.overallScore.toFixed(1)}</span>
           <span className="text-sm font-semibold text-gray-400">/ 5.0</span>
         </div>
-        <div className="mt-2 flex items-center gap-1 text-xs text-amber-600 font-medium">
-          {'★'.repeat(Math.round(stats.overallScore))}
+        <div className="mt-2 flex items-center gap-1 text-xs text-gray-500 font-medium">
+          <div className="flex gap-0.5 text-[#2d7a4f]">
+            {[1, 2, 3, 4, 5].map((s) => (
+              <Star
+                key={s}
+                size={12}
+                className={s <= Math.round(stats.overallScore) ? 'fill-[#2d7a4f] text-[#2d7a4f]' : 'text-gray-200'}
+              />
+            ))}
+          </div>
           <span className="text-gray-400 ml-1">5점 척도</span>
         </div>
       </div>

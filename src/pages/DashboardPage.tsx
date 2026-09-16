@@ -5,7 +5,8 @@ import { MainCalendar, schedulesToCalendarEvents } from '@/components/calendar/M
 import { ScheduleSummaryCard } from '@/components/calendar/ScheduleSummaryCard';
 import { ROLE_LABELS } from '@/utils/permissions';
 import type { Schedule } from '@/types/schedule.types';
-import { Bell, RefreshCw } from 'lucide-react';
+import { Bell, RefreshCw, CalendarX, ChevronRight } from 'lucide-react';
+import { ServiceIcon } from '@/components/common/ServiceIcon';
 
 // ─── DashboardPage ────────────────────────────────────────────
 export default function DashboardPage() {
@@ -168,8 +169,10 @@ function MultipleScheduleList({
   if (daySchedules.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-gray-200 bg-white p-10 text-center">
-        <div className="mb-3 text-4xl">📅</div>
-        <p className="font-semibold text-gray-600">이 날짜에 일정이 없습니다.</p>
+        <div className="mb-3 mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-gray-100 text-gray-400">
+          <CalendarX size={22} strokeWidth={1.75} />
+        </div>
+        <p className="font-semibold text-gray-700 text-sm">이 날짜에 일정이 없습니다.</p>
       </div>
     );
   }
@@ -183,9 +186,7 @@ function MultipleScheduleList({
           className="w-full rounded-2xl bg-white border border-gray-100 px-5 py-4 text-left shadow-sm hover:border-[#2d7a4f] transition group"
         >
           <div className="flex items-start gap-3">
-            <span className="mt-0.5 text-lg">
-              {s.serviceType === '근골격케어' ? '🦴' : s.serviceType === '요가/명상' ? '🧘' : '🧠'}
-            </span>
+            <ServiceIcon serviceType={s.serviceType} size={18} />
             <div className="flex-1 min-w-0">
               <p className="font-semibold text-gray-900 group-hover:text-[#2d7a4f] truncate">{s.title}</p>
               <p className="text-sm text-gray-400 mt-0.5">
@@ -193,7 +194,9 @@ function MultipleScheduleList({
                 {' · '}{s.location.split(' ').slice(0, 3).join(' ')}...
               </p>
             </div>
-            <span className="text-gray-300 group-hover:text-[#2d7a4f] text-lg">›</span>
+            <span className="text-gray-300 group-hover:text-[#2d7a4f] mt-1 transition">
+              <ChevronRight size={18} />
+            </span>
           </div>
         </button>
       ))}
