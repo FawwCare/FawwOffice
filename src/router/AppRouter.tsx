@@ -5,6 +5,7 @@ import LoginPage from '@/pages/LoginPage';
 import RegisterPage from '@/pages/RegisterPage';
 import DashboardPage from '@/pages/DashboardPage';
 import MySchedulesPage from '@/pages/MySchedulesPage';
+import SurveyResultPage from '@/pages/SurveyResultPage';
 
 // ─── 플레이스홀더 페이지 ────────────────────────────────────────
 function PlaceholderPage({ title }: { title: string }) {
@@ -32,8 +33,8 @@ export function AppRouter() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/my-schedules" element={<MySchedulesPage />} />
           <Route path="/schedules/:id" element={<PlaceholderPage title="일정 상세" />} />
-          <Route path="/surveys" element={<PlaceholderPage title="만족도 결과" />} />
-          <Route path="/surveys/:scheduleId" element={<PlaceholderPage title="만족도 결과 상세" />} />
+          <Route path="/surveys" element={<SurveyResultPage />} />
+          <Route path="/surveys/:scheduleId" element={<SurveyResultPage />} />
           <Route path="/profile" element={<PlaceholderPage title="내 프로필" />} />
           <Route path="/admin" element={<PlaceholderPage title="관리자 페이지" />} />
           {/* /app 진입 시 대시보드로 리다이렉트 */}

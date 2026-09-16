@@ -151,10 +151,10 @@ export function ScheduleSummaryCard({ schedule, isUpcoming = false }: ScheduleSu
             </button>
 
             <button
-              onClick={() => navigate(`/schedules/${schedule.id}`)}
+              onClick={() => navigate(`/surveys/${schedule.id}`)}
               className="ml-auto flex items-center gap-1.5 rounded-xl bg-[#2d7a4f] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#1a4a2e]"
             >
-              더보기
+              만족도 결과 보기
               <ChevronRight size={15} />
             </button>
           </div>
