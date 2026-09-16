@@ -27,7 +27,7 @@ function PlaceholderPage({ title }: { title: string }) {
 // ─── AppRouter ────────────────────────────────────────────────
 export function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         {/* 공개 라우트 */}
         <Route path="/" element={<LandingPage />} />
